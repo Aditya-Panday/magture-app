@@ -1,6 +1,20 @@
 import React, { useState, useRef } from 'react';
 import JoditEditor from 'jodit-react';
 import { Button, TextField } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { styled } from '@mui/material/styles';
+
+const VisuallyHiddenInput = styled('input')({
+    clip: 'rect(0 0 0 0)',
+    clipPath: 'inset(50%)',
+    height: 1,
+    overflow: 'hidden',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    whiteSpace: 'nowrap',
+    width: 1,
+});
 export default function CommonSetting() {
     const editor = useRef(null);
     const [content, setContent] = useState('');
@@ -13,8 +27,18 @@ export default function CommonSetting() {
             <div className='form-home container-fluid p-2'>
                 <div className='row'>
                     <div className='col-md-6 mb-3'>
-                        <TextField id='page-heading' label='Page Heading' className='w-100' variant='outlined' />
-                    </div>
+                        <Button
+                            component="label"
+                            role={undefined}
+                            variant="contained"
+                            tabIndex={-1}
+                            className='w-100'
+                            startIcon={<CloudUploadIcon />}
+                        >
+                            Upload file
+                            <VisuallyHiddenInput type="file" />
+                        </Button>
+                    </div>  
                     <div className='col-md-6 mb-3'>
                         <TextField id='page-num' label='Enter Mob Num' type="number" className='w-100' variant='outlined' />
                     </div>
@@ -48,6 +72,6 @@ export default function CommonSetting() {
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

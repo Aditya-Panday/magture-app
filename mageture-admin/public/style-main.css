@@ -6,6 +6,41 @@
 	box-sizing: border-box;
 }
 
+.log-page {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	border: 2px solid gray;
+	background-image: url("bg-log.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+.bx-log {
+	max-width: 500px;
+	min-width: 200px;
+	width: 100%;
+	/* Ensures it takes full width within its container */
+}
+
+.text-log {
+
+	background: linear-gradient(to right, #5335cf, #de005e, #f66e48, #de005e, #5335cf);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.bx-log {
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(4px);
+	border-radius: 10px;
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	background-color: rgba(255, 255, 255, 0.404);
+}
+
 .dash-img {
 	margin-top: 15x;
 	margin-left: 20px;

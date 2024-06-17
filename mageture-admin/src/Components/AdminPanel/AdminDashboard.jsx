@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import DashboardIcon from '@mui/icons-material/Dashboard';
@@ -12,6 +12,7 @@ import ArticleIcon from '@mui/icons-material/Article';
 import LayersIcon from '@mui/icons-material/Layers';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import Tooltip from '@mui/material/Tooltip';
+import ManageBanner from './ManageBanner';
 
 export default function AdminDashboard() {
     const [side, setSide] = useState(false);
@@ -110,9 +111,7 @@ export default function AdminDashboard() {
                 <nav className='nav-nav'>
                     <DensityMediumIcon onClick={handleClick} />
                     <h5 className='pt-2 mx-3'>Welcome Aditya</h5>
-                    <Link to="" className="profile">
-                        <img src="Avatar1.png" alt='' />
-                    </Link>
+                   
                 </nav>
                 {/* <!-- NAVBAR --> */}
 
@@ -181,6 +180,14 @@ export default function AdminDashboard() {
                     )}
                     {activeMenu === "commonsetting" && (
                         <CommonSetting
+                        />
+                    )}
+                    {activeMenu === "banner" && (
+                        <ManageBanner
+                        />
+                    )}
+                    {activeMenu === "blogs" && (
+                        <ManageBanner
                         />
                     )}
                 </main>
