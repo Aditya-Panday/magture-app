@@ -13,6 +13,8 @@ import LayersIcon from '@mui/icons-material/Layers';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import Tooltip from '@mui/material/Tooltip';
 import ManageBanner from './ManageBanner';
+import ManageUsers from './ManageUsers';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 export default function AdminDashboard() {
     const [side, setSide] = useState(false);
@@ -90,6 +92,14 @@ export default function AdminDashboard() {
                             </Link>
                         </Tooltip>
                     </li>
+                    <li className={activeMenu === 'users' ? 'active' : ''}>
+                        <Tooltip title="Manage Users" placement="right">
+                            <Link to="" className='tptp' onClick={() => setActiveMenu('users')}>
+                                <PeopleAltIcon />
+                                <span className="text mx-2">{side ? '' : 'ManageUsers'}</span>
+                            </Link>
+                        </Tooltip>
+                    </li>
                     <li className={activeMenu === 'logout' ? 'active' : ''} >
                         <Tooltip title="Logout" placement="right">
                             <Link to="" className="logout tptp" onClick={() => setActiveMenu('logout')}>
@@ -111,7 +121,7 @@ export default function AdminDashboard() {
                 <nav className='nav-nav'>
                     <DensityMediumIcon onClick={handleClick} />
                     <h5 className='pt-2 mx-3'>Welcome Aditya</h5>
-                   
+
                 </nav>
                 {/* <!-- NAVBAR --> */}
 
@@ -162,14 +172,21 @@ export default function AdminDashboard() {
                                     <DescriptionIcon className='bx bxs-dollar-circle' />
                                     <span className="text">
                                         <h5>Blogs</h5>
-                                        <p>Not Verified Users </p>
+                                        <p>Manage Blogs </p>
                                     </span>
                                 </li>
                                 <li onClick={() => setActiveMenu('leads')}>
                                     <LocalLibraryIcon className='bx bxs-dollar-circle' />
                                     <span className="text">
                                         <h5>Leads</h5>
-                                        <p>Not Verified Users </p>
+                                        <p>Manage Leads </p>
+                                    </span>
+                                </li>
+                                <li onClick={() => setActiveMenu('users')}>
+                                    <PeopleAltIcon className='bx bxs-dollar-circle' />
+                                    <span className="text">
+                                        <h5>Users</h5>
+                                        <p>Manage Users </p>
                                     </span>
                                 </li>
                             </ul>
@@ -188,6 +205,10 @@ export default function AdminDashboard() {
                     )}
                     {activeMenu === "blogs" && (
                         <ManageBanner
+                        />
+                    )}
+                    {activeMenu === "users" && (
+                        <ManageUsers
                         />
                     )}
                 </main>

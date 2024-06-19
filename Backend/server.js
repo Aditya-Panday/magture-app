@@ -3,7 +3,6 @@ const connectToMongo = require("./config/Db");
 const path = require("path");
 const cors = require("cors");
 require("./models/UserSchema");
-// require('./models/FileShareSchema')
 
 connectToMongo();
 const app = express();
