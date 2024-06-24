@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  username: {
+  email: {
     type: String,
     required: true,
   },
@@ -20,6 +20,30 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  home: {
+    type: Boolean,
+    default: false,
+  },
+  commonsetting: {
+    type: Boolean,
+    default: false,
+  },
+  banner: {
+    type: Boolean,
+    default: false,
+  },
+  pages: {
+    type: Boolean,
+    default: false,
+  },
+  blogs: {
+    type: Boolean,
+    default: false,
+  },
+  leads: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 mongoose.model("USER", userSchema);

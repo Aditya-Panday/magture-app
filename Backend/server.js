@@ -1,28 +1,46 @@
 const express = require("express");
 const connectToMongo = require("./config/Db");
-const path = require("path");
 const cors = require("cors");
+require('dotenv').config();
+
+// Models
 require("./models/UserSchema");
-
-connectToMongo();
-const app = express();
-const port = 8000;
-app.set("views", path.resolve("./public"));
-
-app.use(cors());
-app.use(express.json()); //json format data..
-
-const routes = require("./routes");
+require("./models/HomeSchema");
+require("./models/CommonSchema");
+require("./models/LeadsSchema");
+require("./models/BannerSchema");
 
 // Routes
-app.use("/api", routes);
+const userRoutes = require("./routes/Authentication");
+const homeRoutes = require("./routes/Home");
+const commonRoutes = require("./routes/CommonApis");
+const leadsRoutes = require("./routes/LeadsApi");
+const bannerRoutes = require("./routes/BannerApis");
 
+// Connect to MongoDB
+connectToMongo();
+
+// Initialize Express App
+const app = express();
+const port = process.env.PORT || 8000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Routes Middleware
+app.use("/api/auth", userRoutes);
+app.use("/api", homeRoutes);
+app.use("/api/common", commonRoutes);
+app.use("/api/lead", leadsRoutes);
+app.use("/api/banner", bannerRoutes);
+
+// Default route
 app.get("/", (req, res) => {
-  res.send(
-    '<div style="text-align: center;"><h1>Server Running On Port: 8000</h1></div>'
-  );
+  res.send('<div style="text-align: center;"><h1>Server Running On Port: 8000</h1></div>');
 });
 
+// Start server
 app.listen(port, () => {
   console.log(`Server is listening at http://localhost:${port}`);
 });

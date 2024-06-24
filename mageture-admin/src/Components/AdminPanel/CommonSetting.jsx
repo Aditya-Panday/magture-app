@@ -18,6 +18,16 @@ const VisuallyHiddenInput = styled('input')({
 export default function CommonSetting() {
     const editor = useRef(null);
     const [content, setContent] = useState('');
+    const [file, setFile] = useState('');
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            setFile(selectedFile); // Update state with the selected file
+        } else {
+            setFile(''); // Handle case where no file is selected
+        }
+    };
+
     return (
         <div>
             <div className="tit">
@@ -33,12 +43,16 @@ export default function CommonSetting() {
                             variant="contained"
                             tabIndex={-1}
                             className='w-100'
+                            onChange={handleFileChange}
                             startIcon={<CloudUploadIcon />}
                         >
                             Upload file
                             <VisuallyHiddenInput type="file" />
                         </Button>
-                    </div>  
+                        {file && (
+                            <p><b>Selected file:</b> {file.name}</p>
+                        )}
+                    </div>
                     <div className='col-md-6 mb-3'>
                         <TextField id='page-num' label='Enter Mob Num' type="number" className='w-100' variant='outlined' />
                     </div>
