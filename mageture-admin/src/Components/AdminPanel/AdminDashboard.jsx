@@ -23,7 +23,7 @@ import { DataContext } from '../../Context/DataContext';
 export default function AdminDashboard() {
     const { token, setToken } = useContext(DataContext)
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    const username = userInfo.user.email.split('@')[0];
+    const username = userInfo?.user?.email?.split('@')[0];
 
     const [side, setSide] = useState(false);
     const [activeMenu, setActiveMenu] = useState("dashboard");
@@ -62,7 +62,7 @@ export default function AdminDashboard() {
                             </Link>
                         </Tooltip>
                     </li>
-                    {userInfo.user.home === true && (
+                    {userInfo && userInfo?.user?.home === true && (
 
                         <li className={activeMenu === 'home' ? 'active' : ''}>
                             <Tooltip title="Home" placement="right">
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
                             </Tooltip>
                         </li>
                     )}
-                    {userInfo.user.commonsetting === true && (
+                    {userInfo && userInfo?.user?.commonsetting === true && (
                         <li className={activeMenu === 'commonsetting' ? 'active' : ''}>
                             <Tooltip title="CommonSetting" placement="right">
                                 <Link to="" className='tptp' onClick={() => setActiveMenu('commonsetting')}>
@@ -83,7 +83,7 @@ export default function AdminDashboard() {
                             </Tooltip>
                         </li>
                     )}
-                    {userInfo.user.banner === true && (
+                    {userInfo && userInfo?.user?.banner === true && (
                         <li className={activeMenu === 'banner' ? 'active' : ''}>
                             <Tooltip title="Banner" placement="right">
                                 <Link to="" className='tptp' onClick={() => setActiveMenu('banner')}>
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
                             </Tooltip>
                         </li>
                     )}
-                    {userInfo.user.pages === true && (
+                    {userInfo && userInfo?.user?.pages === true && (
 
                         <li className={activeMenu === 'pages' ? 'active' : ''}>
                             <Tooltip title="Pages" placement="right">
@@ -104,7 +104,7 @@ export default function AdminDashboard() {
                             </Tooltip>
                         </li>
                     )}
-                    {userInfo.user.blogs === true && (
+                    {userInfo && userInfo?.user?.blogs === true && (
                         <li className={activeMenu === 'blogs' ? 'active' : ''}>
                             <Tooltip title="Blogs" placement="right">
                                 <Link to="" className='tptp' onClick={() => setActiveMenu('blogs')}>
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
                             </Tooltip>
                         </li>
                     )}
-                    {userInfo.user.leads === true && (
+                    {userInfo && userInfo?.user?.leads === true && (
                         <li className={activeMenu === 'leads' ? 'active' : ''}>
                             <Tooltip title="Leads" placement="right">
                                 <Link to="" className='tptp' onClick={() => setActiveMenu('leads')}>
@@ -124,7 +124,7 @@ export default function AdminDashboard() {
                             </Tooltip>
                         </li>
                     )}
-                    {userInfo.user.Role === 'admin' && (
+                    {userInfo && userInfo?.user?.Role === 'admin' && (
                         <li className={activeMenu === 'users' ? 'active' : ''}>
                             <Tooltip title="Manage Users" placement="right">
                                 <Link to="" className='tptp' onClick={() => setActiveMenu('users')}>
@@ -175,7 +175,7 @@ export default function AdminDashboard() {
                                         <h5>Dashboard</h5>
                                     </span>
                                 </li>
-                                {userInfo.user.leads === true && (
+                                {userInfo && userInfo.user.leads === true && (
                                     <li onClick={() => setActiveMenu('home')}>
                                         <HomeIcon className='bx bxs-group' />
                                         <span className="text">
@@ -184,7 +184,7 @@ export default function AdminDashboard() {
                                         </span>
                                     </li>
                                 )}
-                                {userInfo.user.commonsetting === true && (
+                                {userInfo && userInfo.user.commonsetting === true && (
                                     <li onClick={() => setActiveMenu('commonsetting')}>
                                         <SettingsIcon className='bx bxs-dollar-circle' />
                                         <span className="text">
@@ -193,7 +193,7 @@ export default function AdminDashboard() {
                                         </span>
                                     </li>
                                 )}
-                                {userInfo.user.banner === true && (
+                                {userInfo && userInfo?.user?.banner === true && (
                                     <li onClick={() => setActiveMenu('banner')}>
                                         <ArticleIcon className='bx bxs-dollar-circle' />
                                         <span className="text">
@@ -202,7 +202,7 @@ export default function AdminDashboard() {
                                         </span>
                                     </li>
                                 )}
-                                {userInfo.user.pages === true && (
+                                {userInfo && userInfo?.user?.pages === true && (
                                     <li onClick={() => setActiveMenu('pages')}>
                                         <LayersIcon className='bx bxs-dollar-circle' />
                                         <span className="text">
@@ -211,7 +211,7 @@ export default function AdminDashboard() {
                                         </span>
                                     </li>
                                 )}
-                                {userInfo.user.blogs === true && (
+                                {userInfo && userInfo?.user?.blogs === true && (
                                     <li onClick={() => setActiveMenu('blogs')}>
                                         <DescriptionIcon className='bx bxs-dollar-circle' />
                                         <span className="text">
@@ -220,7 +220,7 @@ export default function AdminDashboard() {
                                         </span>
                                     </li>
                                 )}
-                                {userInfo.user.leads === true && (
+                                {userInfo && userInfo?.user?.leads === true && (
                                     <li onClick={() => setActiveMenu('leads')}>
                                         <LocalLibraryIcon className='bx bxs-dollar-circle' />
                                         <span className="text">
@@ -229,7 +229,7 @@ export default function AdminDashboard() {
                                         </span>
                                     </li>
                                 )}
-                                {userInfo.user.Role === 'admin' && (
+                                {userInfo && userInfo?.user?.Role === 'admin' && (
                                     <li onClick={() => setActiveMenu('users')}>
                                         <PeopleAltIcon className='bx bxs-dollar-circle' />
                                         <span className="text">
