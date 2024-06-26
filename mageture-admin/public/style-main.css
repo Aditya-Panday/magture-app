@@ -5,7 +5,9 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
+.ic-edit{
+	margin-left: 6px;
+}
 .log-page {
 	display: grid;
 	justify-content: center;
