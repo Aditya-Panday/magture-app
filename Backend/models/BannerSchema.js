@@ -10,6 +10,9 @@ const bannerSchema = new mongoose.Schema({
     description: {
         type: String,
     },
+    category: {
+        type: String,
+    },
     status: {
         type: String,
         default: "active",
